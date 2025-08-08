@@ -1,0 +1,39 @@
+{
+  "name": "Demo-Docker",
+  "version": "0.1.0",
+  "label": "Folder Counter (CPU)",
+  "shortDescription": "Reads an input folder and writes summary.txt to /output.",
+  "longDescription": "Example CyVerse batch app. Counts files under /working/input and writes /output/summary.txt.",
+  "executionSystem": "de",
+  "deploymentSystem": "de",
+  "parallelism": "SERIAL",
+  "container": {
+    "image": "docker://ghcr.io/lokeshwarreddyg/docker:sha-094ca26",
+    "workingDirectory": "/working",
+    "maxCPU": 2,
+    "maxMemory": "4GB",
+    "ports": []
+  },
+  "inputs": [
+    {
+      "id": "input_folder",
+      "label": "Input folder",
+      "description": "Folder that will be staged to /working/input.",
+      "semantics": { "fileTypes": ["folder"] },
+      "value": { "default": "" }
+    }
+  ],
+  "parameters": [],
+  "outputs": [
+    {
+      "id": "output",
+      "label": "Output directory (captured automatically)",
+      "semantics": { "fileTypes": ["plain_text"] },
+      "value": { "default": "" }
+    }
+  ],
+  "defaultMaxRunTime": "02:00:00",
+  "defaultMemory": "2GB",
+  "defaultProcessors": 1,
+  "defaultNodeCount": 1
+}
